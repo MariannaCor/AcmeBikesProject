@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1s262un" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.2.0">
+  <bpmn:process id="Process_1o362gc" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1ipxcsx</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:intermediateThrowEvent id="Event_0ax4wxj" name="Invia&#10;acconto">
+      <bpmn:incoming>Flow_1ipxcsx</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ybhm2g</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1kq0eeo" messageRef="Message_1di1v3z" camunda:class="org.acme.acme_project.InviaAcconto" />
+    </bpmn:intermediateThrowEvent>
+    <bpmn:intermediateCatchEvent id="Event_1nsb74t" name="Ricevi conferma">
+      <bpmn:incoming>Flow_1ybhm2g</bpmn:incoming>
+      <bpmn:outgoing>Flow_0jyr68r</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1yx2hlm" messageRef="Message_1hxfbfv" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_1ybhm2g" sourceRef="Event_0ax4wxj" targetRef="Event_1nsb74t" />
+    <bpmn:sequenceFlow id="Flow_1ipxcsx" sourceRef="StartEvent_1" targetRef="Event_0ax4wxj" />
+    <bpmn:endEvent id="Event_0xkwekx">
+      <bpmn:incoming>Flow_0jyr68r</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0jyr68r" sourceRef="Event_1nsb74t" targetRef="Event_0xkwekx" />
+  </bpmn:process>
+  <bpmn:message id="Message_1di1v3z" name="InviaAcconto" />
+  <bpmn:message id="Message_1hxfbfv" name="RiceviConferma" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1o362gc">
+      <bpmndi:BPMNEdge id="Flow_1ybhm2g_di" bpmnElement="Flow_1ybhm2g">
+        <di:waypoint x="358" y="177" />
+        <di:waypoint x="442" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ipxcsx_di" bpmnElement="Flow_1ipxcsx">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="322" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0jyr68r_di" bpmnElement="Flow_0jyr68r">
+        <di:waypoint x="478" y="177" />
+        <di:waypoint x="562" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ax4wxj_di" bpmnElement="Event_0ax4wxj">
+        <dc:Bounds x="322" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="320" y="122" width="39" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1nsb74t_di" bpmnElement="Event_1nsb74t">
+        <dc:Bounds x="442" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="421" y="129" width="79" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0xkwekx_di" bpmnElement="Event_0xkwekx">
+        <dc:Bounds x="562" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
