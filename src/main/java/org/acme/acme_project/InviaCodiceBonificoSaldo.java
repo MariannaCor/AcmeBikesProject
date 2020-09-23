@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -24,39 +25,35 @@ import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.camunda.spin.json.SpinJsonNode;
 
 
-public class InviaAcconto implements JavaDelegate {
+public class InviaCodiceBonificoSaldo implements JavaDelegate {
 
-	private int insertedIdValue = -1;
-
+	private int codiceBonifico; 
+	private String totaleSaldo;
+	
 	@Override
 	public void execute(DelegateExecution execution) throws Exception {
-
-		sendPost();
-
-		execution.setVariable("codiceBonificoAcconto", insertedIdValue);
 		
-		execution.getProcessEngineServices().getRuntimeService().createMessageCorrelation("InviaAccontoRec")
+		codiceBonifico = Integer.parseInt(execution.getVariable("codiceBonificoSaldo").toString());
+		
+		sendGet();
+
+		execution.setVariable("totaleSaldo", totaleSaldo);
+		
+		execution.getProcessEngineServices().getRuntimeService().createMessageCorrelation("RichiestaInfoSaldoRec")
 				.correlate();
 
 	}
 
-	private void sendPost() throws Exception {
+	private void sendGet() throws Exception {
 
-		HttpPost post = new HttpPost("http://localhost:3000/transfer");
+		HttpGet get = new HttpGet("http://localhost:3000/transfer/"+codiceBonifico);
 
-		// TODO: rendere dinamici da form
-		List<NameValuePair> urlParameters = new ArrayList<>();
-		urlParameters.add(new BasicNameValuePair("receiver", "'AcmeBikes'"));
-		urlParameters.add(new BasicNameValuePair("sender", "'rivendita'"));
-		urlParameters.add(new BasicNameValuePair("transferAmount", "354"));
-
-		post.setEntity(new UrlEncodedFormEntity(urlParameters));
 		CloseableHttpClient httpClient = null;
 		String responseString = null;
 
 		try {
 			httpClient = HttpClients.createDefault();
-			CloseableHttpResponse response = httpClient.execute(post);
+			CloseableHttpResponse response = httpClient.execute(get);
 
 			responseString = EntityUtils.toString(response.getEntity());
 
@@ -65,11 +62,8 @@ public class InviaAcconto implements JavaDelegate {
 		}
 
 		if (responseString != null) {
-			String responseJson = responseString;
-			SpinJsonNode json = S(responseJson, json());
-			
-			insertedIdValue = Integer.parseInt(json.prop("insertId").stringValue());
-
+			SpinJsonNode json = S(responseString, json());
+			totaleSaldo = json.prop("TransferAmount").stringValue();
 		}
 
 	}

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="acme.wsdl" xmlns:xsd1="acme.xsd" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="acme.wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema targetNamespace="acme.xsd" xmlns:sch="acme.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="scomponiOrdine"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="listaOrdine" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="verificaComponentiMancantiCicli"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="codiceComponente" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="verificaComponentiMancantiCicliResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="magazzino" type="xs:string"/><xs:element maxOccurs="1" minOccurs="1" name="verificaComponente" type="xs:boolean"/></xs:sequence></xs:complexType></xs:element><xs:element name="verificaMontaggio"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="montaggio" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="verificaMontaggioResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="daMontare" type="xs:boolean"/></xs:sequence></xs:complexType></xs:element><xs:element name="verificaComponentiAccessori"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="codiceComponente" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="verificaComponentiAccessoriResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="magazzino" type="xs:string"/><xs:element maxOccurs="1" minOccurs="1" name="verificaComponente" type="xs:boolean"/></xs:sequence></xs:complexType></xs:element><xs:element name="verificaImportoSaldo"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="totalePreventivo" type="xs:double"/><xs:element maxOccurs="1" minOccurs="1" name="importoBonificoAcconto" type="xs:double"/><xs:element maxOccurs="1" minOccurs="1" name="importoBonificoSaldo" type="xs:double"/></xs:sequence></xs:complexType></xs:element><xs:element name="verificaImportoSaldoResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="importo" type="xs:boolean"/></xs:sequence></xs:complexType></xs:element><xs:element name="aggiornaPreventivo"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="applicaSconto" type="xs:boolean"/><xs:element maxOccurs="1" minOccurs="1" name="parzialePreventivo" type="xs:double"/><xs:element maxOccurs="1" minOccurs="1" name="sconto" type="xs:int"/></xs:sequence></xs:complexType></xs:element><xs:element name="aggiornaPreventivoResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="tot" type="xs:double"/></xs:sequence></xs:complexType></xs:element><xs:element name="verificaComponentiCicli"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="codiceComponente" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="verificaComponentiCicliResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="verificaComponente" type="xs:boolean"/></xs:sequence></xs:complexType></xs:element><xs:element name="calcolaPreventivo"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="lista" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="calcolaPreventivoResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="tot" type="xs:double"/></xs:sequence></xs:complexType></xs:element><xs:element name="verificaImportoAcconto"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="totalePreventivo" type="xs:double"/><xs:element maxOccurs="1" minOccurs="1" name="importoBonificoAcconto" type="xs:double"/></xs:sequence></xs:complexType></xs:element><xs:element name="verificaImportoAccontoResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="importo" type="xs:boolean"/></xs:sequence></xs:complexType></xs:element></xs:schema>
+  </wsdl:types>
+  <wsdl:message name="verificaComponentiCicliResponse">
+    <wsdl:part name="body" element="xsd1:verificaComponentiCicliResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verificaImportoSaldoResponse">
+    <wsdl:part name="body" element="xsd1:verificaImportoSaldoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verificaImportoAccontoRequest">
+    <wsdl:part name="body" element="xsd1:verificaImportoAcconto">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verificaMontaggioResponse">
+    <wsdl:part name="body" element="xsd1:verificaMontaggioResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="scomponiOrdineRequest">
+    <wsdl:part name="body" element="xsd1:scomponiOrdine">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="calcolaPreventivoResponse">
+    <wsdl:part name="body" element="xsd1:calcolaPreventivoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verificaMontaggioRequest">
+    <wsdl:part name="body" element="xsd1:verificaMontaggio">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="calcolaPreventivoRequest">
+    <wsdl:part name="body" element="xsd1:calcolaPreventivo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verificaImportoAccontoResponse">
+    <wsdl:part name="body" element="xsd1:verificaImportoAccontoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verificaImportoSaldoRequest">
+    <wsdl:part name="body" element="xsd1:verificaImportoSaldo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="aggiornaPreventivoRequest">
+    <wsdl:part name="body" element="xsd1:aggiornaPreventivo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verificaComponentiAccessoriRequest">
+    <wsdl:part name="body" element="xsd1:verificaComponentiAccessori">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verificaComponentiCicliRequest">
+    <wsdl:part name="body" element="xsd1:verificaComponentiCicli">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verificaComponentiMancantiCicliRequest">
+    <wsdl:part name="body" element="xsd1:verificaComponentiMancantiCicli">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verificaComponentiAccessoriResponse">
+    <wsdl:part name="body" element="xsd1:verificaComponentiAccessoriResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verificaComponentiMancantiCicliResponse">
+    <wsdl:part name="body" element="xsd1:verificaComponentiMancantiCicliResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="aggiornaPreventivoResponse">
+    <wsdl:part name="body" element="xsd1:aggiornaPreventivoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="magazzinoPrincipaleService">
+    <wsdl:operation name="scomponiOrdine">
+      <wsdl:input message="tns:scomponiOrdineRequest">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="verificaComponentiMancantiCicli">
+      <wsdl:input message="tns:verificaComponentiMancantiCicliRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:verificaComponentiMancantiCicliResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificaMontaggio">
+      <wsdl:input message="tns:verificaMontaggioRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:verificaMontaggioResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificaComponentiAccessori">
+      <wsdl:input message="tns:verificaComponentiAccessoriRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:verificaComponentiAccessoriResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificaImportoSaldo">
+      <wsdl:input message="tns:verificaImportoSaldoRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:verificaImportoSaldoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaPreventivo">
+      <wsdl:input message="tns:aggiornaPreventivoRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:aggiornaPreventivoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificaComponentiCicli">
+      <wsdl:input message="tns:verificaComponentiCicliRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:verificaComponentiCicliResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calcolaPreventivo">
+      <wsdl:input message="tns:calcolaPreventivoRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:calcolaPreventivoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificaImportoAcconto">
+      <wsdl:input message="tns:verificaImportoAccontoRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:verificaImportoAccontoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="magazzinoPrincipaleServiceSOAPBinding" type="tns:magazzinoPrincipaleService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="scomponiOrdine">
+      <soap:operation soapAction="scomponiOrdine" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificaComponentiMancantiCicli">
+      <soap:operation soapAction="verificaComponentiMancantiCicli" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificaMontaggio">
+      <soap:operation soapAction="verificaMontaggio" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificaComponentiAccessori">
+      <soap:operation soapAction="verificaComponentiAccessori" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificaImportoSaldo">
+      <soap:operation soapAction="verificaImportoSaldo" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaPreventivo">
+      <soap:operation soapAction="aggiornaPreventivo" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificaComponentiCicli">
+      <soap:operation soapAction="verificaComponentiCicli" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calcolaPreventivo">
+      <soap:operation soapAction="calcolaPreventivo" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificaImportoAcconto">
+      <soap:operation soapAction="verificaImportoAcconto" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="magazzinoPrincipaleServiceService">
+    <wsdl:port name="magazzinoPrincipaleServiceServicePort" binding="tns:magazzinoPrincipaleServiceSOAPBinding">
+      <soap:address location="http://localhost:7001"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

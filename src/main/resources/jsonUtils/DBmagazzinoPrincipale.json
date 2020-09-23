@@ -1,0 +1,17 @@
+{		
+    "Articoli": [
+            {
+            "Codice": "AC579989",
+            "Quantità" : 3
+		},  {
+            "Codice": "AC574599",
+            "Quantità" : 50
+        },  {
+            "Codice": "AC123456",
+            "Quantità" : 0
+        },  {
+            "Codice": "AC779919",
+            "Quantità" : 10
+        }] 
+}
+

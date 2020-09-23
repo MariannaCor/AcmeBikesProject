@@ -1,0 +1,21 @@
+{		
+    "Articoli": [
+            {
+            "Codice": "AC579989",
+            "Quantità" : 3,
+            "Magazzino": "Via Toledo, 22, Napoli"
+		},  {
+            "Codice": "AC574599",
+            "Quantità" : 50,
+            "Magazzino": "Via Paolo Sarpi, 3, Milano"
+        },  {
+            "Codice": "AC574589",
+            "Quantità" : 0,
+            "Magazzino": "Via Paolo Sarpi, 3, Milano"
+        },  {
+            "Codice": "AC779919",
+            "Quantità" : 10,
+            "Magazzino": "Via Roma, 55, Torino"
+        }] 
+}
+

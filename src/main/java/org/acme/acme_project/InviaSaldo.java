@@ -12,19 +12,15 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
-import static org.camunda.spin.DataFormats.json;
-import static org.camunda.spin.Spin.S;
-
 import java.io.IOException;
 
 import java.util.List;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
-import org.camunda.spin.json.SpinJsonNode;
 
 
-public class InviaAcconto implements JavaDelegate {
+public class InviaSaldo implements JavaDelegate {
 
 	private int insertedIdValue = -1;
 
@@ -33,9 +29,9 @@ public class InviaAcconto implements JavaDelegate {
 
 		sendPost();
 
-		execution.setVariable("codiceBonificoAcconto", insertedIdValue);
+		execution.setVariable("codiceBonificoSaldo", insertedIdValue);
 		
-		execution.getProcessEngineServices().getRuntimeService().createMessageCorrelation("InviaAccontoRec")
+		execution.getProcessEngineServices().getRuntimeService().createMessageCorrelation("inviaSaldoRec")
 				.correlate();
 
 	}
@@ -44,7 +40,7 @@ public class InviaAcconto implements JavaDelegate {
 
 		HttpPost post = new HttpPost("http://localhost:3000/transfer");
 
-		// TODO: rendere dinamici da form
+		//TODO: rendere dinamico
 		List<NameValuePair> urlParameters = new ArrayList<>();
 		urlParameters.add(new BasicNameValuePair("receiver", "'AcmeBikes'"));
 		urlParameters.add(new BasicNameValuePair("sender", "'rivendita'"));
@@ -53,6 +49,7 @@ public class InviaAcconto implements JavaDelegate {
 		post.setEntity(new UrlEncodedFormEntity(urlParameters));
 		CloseableHttpClient httpClient = null;
 		String responseString = null;
+		int lastInsertIdValue, beginServerStatus = 0;
 
 		try {
 			httpClient = HttpClients.createDefault();
@@ -65,11 +62,11 @@ public class InviaAcconto implements JavaDelegate {
 		}
 
 		if (responseString != null) {
-			String responseJson = responseString;
-			SpinJsonNode json = S(responseJson, json());
-			
-			insertedIdValue = Integer.parseInt(json.prop("insertId").stringValue());
-
+			// lavoro sulla stringa per ottenere il valore di "insertId"
+			lastInsertIdValue = responseString.indexOf("insertId") + 10;
+			beginServerStatus = responseString.indexOf("serverStatus") - 2;
+			insertedIdValue = Integer.parseInt(responseString.substring(lastInsertIdValue, beginServerStatus));
+			System.out.print(insertedIdValue);
 		}
 
 	}

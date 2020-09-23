@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="acme.wsdl" xmlns:xsd1="acme.xsd" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="acme.wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema targetNamespace="acme.xsd" xmlns:sch="acme.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="inviaNotifica"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="statusPacco" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="inviaNotificaResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="msg" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="spedizionePacco"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="statusPacco" type="xs:string"/></xs:sequence></xs:complexType></xs:element></xs:schema>
+  </wsdl:types>
+  <wsdl:message name="SpedizionePaccoRequest">
+    <wsdl:part name="body" element="xsd1:spedizionePacco">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RispostaInviaNotifica">
+    <wsdl:part name="body" element="xsd1:inviaNotificaResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RichiestaInviaNotifica">
+    <wsdl:part name="body" element="xsd1:inviaNotifica">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CorriereService">
+    <wsdl:operation name="inviaNotifica">
+      <wsdl:input message="tns:RichiestaInviaNotifica">
+    </wsdl:input>
+      <wsdl:output message="tns:RispostaInviaNotifica">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spedizionePacco">
+      <wsdl:input message="tns:SpedizionePaccoRequest">
+    </wsdl:input>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CorriereServiceSOAPBinding" type="tns:CorriereService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="inviaNotifica">
+      <soap:operation soapAction="inviaNotifica" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spedizionePacco">
+      <soap:operation soapAction="spedizionePacco" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CorriereServiceService">
+    <wsdl:port name="CorriereServiceServicePort" binding="tns:CorriereServiceSOAPBinding">
+      <soap:address location="http://localhost:8001"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

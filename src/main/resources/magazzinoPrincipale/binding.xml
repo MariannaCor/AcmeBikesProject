@@ -1,5 +1,5 @@
 <bindings xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-	wsdlLocation="C:\Users\tearl\progetto_ing_software_servizi\AcmeBikesProject\src\main\resources\magazzinoEsterno.wsdl" 
+	wsdlLocation="MagazzinoPrincipale.wsdl" 
 	xmlns="http://java.sun.com/xml/ns/jaxws">
 	<enableWrapperStyle>false</enableWrapperStyle>
 </bindings>

@@ -1,0 +1,59 @@
+{		
+    "ordine": [
+		{
+			"tipoOrdine": "Ciclo",
+		
+			"listaOrdine": {
+					"codice": "CI551189",
+					"nome": "Furia Blu MTB",
+					"colorazione": "Blu"  ,
+					"gruppoFrenante": "Disco", 
+					"gruppoSterzo": "Premium",
+					"trasmissione": "Premium",
+					"ammortizzatori": "Premium"
+				},
+		
+			"prezzo": 580.00
+		},  
+		
+		{
+			"tipoOrdine": "Accessorio",
+			
+			"listaOrdine": {
+					"codice": "AC579989",
+					"nome": "Portapacchi",
+					"montaggio": "N"
+			},
+				
+			"prezzo": 50.00
+		}, 
+		
+		{
+			"tipoOrdine": "Accessorio",
+			
+			"listaOrdine": {
+					"codice": "AC574589",
+					"nome": "Sterzo",
+					"montaggio": "S"
+				},
+				
+			"prezzo": 150.00
+		}, 
+		
+		{
+			"tipoOrdine": "Ciclo",
+			
+			"listaOrdine": {
+					"codice": "CI552289",
+					"nome": "Furia Rossa MTB",
+					"colorazione": "Rossa"  ,
+					"gruppoFrenante": "Disco", 
+					"gruppoSterzo": "Normale",
+					"trasmissione": "Premium",
+					"ammortizzatori": "Premium"
+				},
+				
+			"prezzo": 400.00
+		}
+	] 
+}
