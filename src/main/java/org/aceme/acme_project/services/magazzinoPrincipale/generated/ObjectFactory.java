@@ -158,6 +158,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ScomponiOrdineResponse }
+     * 
+     */
+    public ScomponiOrdineResponse createScomponiOrdineResponse() {
+        return new ScomponiOrdineResponse();
+    }
+
+    /**
      * Create an instance of {@link VerificaImportoSaldoResponse }
      * 
      */

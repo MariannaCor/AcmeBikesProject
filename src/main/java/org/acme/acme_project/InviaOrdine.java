@@ -9,7 +9,7 @@ public class InviaOrdine implements JavaDelegate {
 	public void execute(DelegateExecution exec) throws Exception {
 		
 		exec.getProcessEngineServices().getRuntimeService()
-		.createMessageCorrelation("InvioDatiBonificoRec")
+		.createMessageCorrelation("InviaOrdineRec")
 		.correlate();
 
 	}

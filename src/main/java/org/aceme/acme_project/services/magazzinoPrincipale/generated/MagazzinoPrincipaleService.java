@@ -1,7 +1,6 @@
 
 package org.aceme.acme_project.services.magazzinoPrincipale.generated;
 
-import javax.jws.Oneway;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -27,10 +26,12 @@ public interface MagazzinoPrincipaleService {
     /**
      * 
      * @param body
+     * @return
+     *     returns org.aceme.acme_project.services.magazzinoPrincipale.generated.ScomponiOrdineResponse
      */
     @WebMethod(action = "scomponiOrdine")
-    @Oneway
-    public void scomponiOrdine(
+    @WebResult(name = "scomponiOrdineResponse", targetNamespace = "acme.xsd", partName = "body")
+    public ScomponiOrdineResponse scomponiOrdine(
         @WebParam(name = "scomponiOrdine", targetNamespace = "acme.xsd", partName = "body")
         ScomponiOrdine body);
 

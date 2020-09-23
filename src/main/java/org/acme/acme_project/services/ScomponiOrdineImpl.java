@@ -15,7 +15,10 @@ public class ScomponiOrdineImpl implements JavaDelegate {
 		
 		ScomponiOrdine scomponiOrdineRequest = new ScomponiOrdine();
 		scomponiOrdineRequest.setListaOrdine(execution.getVariable("listaOrdine").toString());
-		magazzinoPricipaleService.scomponiOrdine(scomponiOrdineRequest);
+		ScomponiOrdineResponse scomponiOrdineResponse = magazzinoPricipaleService.scomponiOrdine(scomponiOrdineRequest);
+		
+		
+		execution.setVariable("accessoriCheck", scomponiOrdineResponse.isAccessoriOk());
 
 	}
 
